@@ -1,0 +1,106 @@
+---
+title: "Assignment 1.14"
+author: "Julia Nguyen"
+date: "09/18/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+### Collaboration team: 
+
+Record who you've worked on the assignment with here. 
+
+
+## Assignment 1.14 -- 
+
+```{r setup, include=FALSE}
+# Do not alter this section of code!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Write a R code in each chunk (gray space) that provides answers to the following questions. If any questions need direct answers, give them in regular text space (white space).
+
+Each subpart of code below has at least one error. Correct each error, write a short explanation of your fix, and turn in the corrected version of this script. The script should run cleanly using "Source" in a clean working environment.
+
+### Question 1
+
+```{r}
+data("Loblolly")
+```
+
+  a. 
+
+```{r}
+mean(Loblolly$height)
+```
+  
+  There was a mispelling. Insted of :obolluy, it should be Loblolly.
+  
+  b. 
+  
+```{r}
+sd(Loblolly$height)
+```
+  
+ h in height should be lowercased.
+  
+  c. 
+  
+```{r}
+data(Loblolly)
+Loblolly$seed <- as.numeric(Loblolly$Seed)
+mean((Loblolly$seed))
+
+```
+
+  The dataset name is mispelled. It shouldn't be Lobolly but Loblolly.And it is not numeric or logical which will make it null. So I did str() to convert it to a numeric. 
+
+  d. 
+  
+```{r}
+sd(Loblolly$Age)
+```
+
+it is not std, but sd to find the standard deviation.
+
+### Question 2
+  
+```{r}
+vec1 <- c(3, 9, 10, 3, 29)
+mean(vec1)
+```
+
+I switched the order of the code. You can't do mean(vec1) because it hasn't existed yet.
+
+### Question 3
+
+```{r}
+data("ChickWeight")
+```
+
+  a. 
+  
+```{r}
+chick1.dat <- subset(ChickWeight, (ChickWeight$Diet==1))
+
+```
+  
+It is missing the closing parenthesis at the end of the function  
+  b. 
+  
+```{r}
+chick1.dat <- subset(ChickWeight, ChickWeight$Diet==2)
+```
+  
+It needs two = inside the function  
+  c. 
+  
+```{r}
+mean(ChickWeight$weight[ChickWeight$Time==0])
+```
+  
+The need barracks not parenthesis because you use [] to access a specific column in a data frame or to subset  vectors. 
+
+Turn in this RMD file.

@@ -1,0 +1,25 @@
+---
+title: "Assignment 3.1"
+author: "Julia Nguyen"
+date: "10/23/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+For Stewart et al. 2017:
+Write a 200-word summary of the paper.
+The paper, “Our Path to Better Science in Less Time Using Open Data Science Tools, " discusses the challenges of reproducibility and collaboration in scientific research. Many scientists face issues reproducing their work due to inefficient data management practices and inadequate documentation. To solve this problem, the authors used open data science tools and practices from the software department to improve reproducibility, collaboration, and research in their research.
+
+
+They used tools like R, RStudio, Git, and GitHub to make data prep, version control, and project management more efficient. As a result, the time to reproduce scientific studies has lessened, and transparency and openness have increased. This allowed the researchers to focus elsewhere or further develop their experiments.  There are long-term benefits to incorporating these tools into scientific research. Through better collaboration and sharing of data and methods, the scientific community can make more reliable and reproducible research using these tools. The long-term benefits would be that trust in science would increase and research can be conducted more effectively. 
+
+
+Come up with answers to the following questions (to be used for the discussion):
+
+a. What are good reasons to make science open, transparent, and reproducible?
+Making science open, transparent, and reproducible comes with a lot of benefits. For example, making science open and transparent allows for other scientists to reproduce the experiments. This allows for people to learn new things or confirm the results. A person can disprove or further prove the results of an experiment by completing the experiment themselves. 
+
+b. What are some tools that Stewart et al. suggest might be helpful to make science more open?
+Some of the tools Stewart et al. suggested were  R, RStudio, Git, and GitHub. These tools make it easier to share and collaborate on projects. 

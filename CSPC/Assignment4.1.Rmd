@@ -1,0 +1,15 @@
+---
+title: "Assignment 4.1"
+author: "Julia Nguyen"
+date: "11/20/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: "CPSC 292 Section 02"
+---
+
+## Assignment 4.1
+
+The main focus of Unit 4.1 is how to communicate your ideas effectively. The three points were to: 1)know your goal, 2) know your audience, and 3) tell a story. The first point, knowing your goal, is straightforward—what are you trying to convey? Clearly defining your objective is part of crafting a strong message. The second point focuses on understanding your audience. Who are you presenting to? This is a important factor because different audiences will have varying levels of knowledge about your topic. You need to consider how much background information they have and adjust your presentation accordingly. It’s important to strike a balance—introducing new concepts without appearing overly simplistic or repetitive.
+
+The third point, telling a story, resonated with me the most. People naturally connect with stories and tend to remember them better than raw data or numbers. Stories can make complex ideas more relatable and engaging, helping the audience retain key information. While data is valuable, presenting it in a way that connects to real-life experiences or narratives makes it far more impactful. Overall, Unit 4.1 highlights how knowing your goal, understanding your audience, and incorporating storytelling can make a presentation not only informative, but memorable.

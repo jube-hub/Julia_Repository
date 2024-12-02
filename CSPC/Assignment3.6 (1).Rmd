@@ -1,0 +1,115 @@
+---
+title: "Assignment 3.6"
+author: "Julia Nguyen"
+date: "10/30/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: "CPSC 292 Section 02"
+---
+
+## Assignment 3.6
+
+```{r, include=TRUE}
+# Loading required libraries
+
+```
+
+For this assignment, pick three chunks of code from past assignments in units 2 or 3 to refactor. Each chunk must be at least 5 lines long. Copy those into a new Rmd file for this assignment and label each of them questions 1, 2, and 3. Refactor the code so that it conforms to the style guide elements set out in L3.8. Be sure to identify your goals of refactoring each in the text.
+
+### Question 1
+Assignment 2.1 
+```{r, include=TRUE}
+# data("Loblolly")
+# seed_colors <- rainbow(length(unique(Loblolly$Seed)))
+# plot(x = Loblolly$age, 
+     # y = Loblolly$height, 
+    # pch = 17, 
+     # col = seed_colors[Loblolly$Seed], 
+     # xlab = "Age (year)", 
+     # ylab = "height(cm)", 
+    # main = "Heigt vs. Age of Lobolly Trees")
+
+data("Loblolly")
+plot(
+  Loblolly$age,
+  Loblolly$height,
+  pch = 17,
+  col = rainbow(length(unique(Loblolly$Seed)))[Loblolly$Seed],
+  xlab = "Age (years)",
+  ylab = "Height (cm)",
+  main = "Height vs. Age of Loblolly Trees"
+)
+
+
+```
+The goal of refactoring is improve the readability, simplify code for easier understanding, and correct typos.
+
+Make sure all have consistent spaces around the equals sign (=).
+Correct the typo in the title ("Heigt" to "Height").
+
+### Question 2
+Unit 2.3
+```{r, include=TRUE}
+
+# data("Loblolly")
+# color.map <- as.numeric(Loblolly$Seed)
+# plot(Loblolly$age, Loblolly$Seed,
+    # col=colors,
+    # pch=19,
+    # xlab="Age",
+    # ylab="Height")
+
+data("Loblolly")
+seed_color_palette <- rainbow(length(unique(Loblolly$Seed)))
+seed_colors <- seed_color_palette[as.numeric(Loblolly$Seed)]
+plot(
+  x = Loblolly$age,
+  y = Loblolly$height,
+  col = seed_colors,
+  pch = 19,
+  xlab = "Age (years)",
+  ylab = "Height (cm)"
+)
+
+```
+Goal is to make variable names conform to style guide and make variable names more meaningful. Even spacing, and define variable.
+
+### Question 3
+Unit 3.3
+```{r, include=TRUE}
+# number <- 7 
+# if (number >=0 && number <=10) {
+#   data <- read.csv("data_Unit3/dataset_1.csv")
+# } else if (number >= 11 && number <= 20) {
+#   data <- read.csv("data_Unit3/dataset_2.csv")
+# } else if (number >= 21 && number <= 30) {
+#   data <- read.csv("data_Unit3/dataset_3.csv")
+# } else if (number > 30) {
+#   data <- read.csv("data_Unit3/dataset_4.csv")
+# }
+# plot(data$pt1_X, data$pt1_Y, 
+#        xlab = "pt1_X", 
+#        ylab = "pt1_Y", 
+#        main = "Plot of pt1_X vs. pt1_Y")
+
+number <- 7 
+if (number >= 0 && number <= 10) {
+  data <- read.csv("data_Unit3/dataset_1.csv")
+} else if (number >= 11 && number <= 20) {
+  data <- read.csv("data_Unit3/dataset_2.csv")
+} else if (number >= 21 && number <= 30) {
+  data <- read.csv("data_Unit3/dataset_3.csv")
+} else if (number > 30) {
+  data <- read.csv("data_Unit3/dataset_4.csv")
+}
+plot(
+  x = data$pt1_X,
+  y = data$pt1_Y,
+  xlab = "pt1_X",
+  ylab = "pt1_Y",
+  main = "Plot of pt1_X vs. pt1_Y"
+)
+
+```
+Goal is to improve syntax by adding spaces and conform braces and brackets to style guide number. I added spaces between = and numbers.

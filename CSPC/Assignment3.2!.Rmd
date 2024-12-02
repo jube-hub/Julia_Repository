@@ -1,0 +1,96 @@
+---
+title: "Assignment 3.2"
+author: "Julia Nguyen"
+date: "10/25/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: "CPSC 292 Section 02"
+---
+
+## Assignment 3.2 
+
+```{r, include=TRUE}
+# Loading required libraries
+
+```
+
+### Question 1
+
+*Complete the following steps:*
+
+ a.  *Create a function that will take an object `x` and return the results of the following calculation: 4x^4  - sin(3x) + 12.*
+
+```{r, include=TRUE}
+
+calculate_function <- function(x) {
+  result <- 4 * x^4 - sin(3 * x) + 12
+  return(result)
+}
+
+
+```
+
+ b. *Use your function to calculate the result of ten random numbers. Store the results in another object.*
+ 
+```{r, include=TRUE}
+
+calculate_expression <- function(x) {
+  result <- 4 * x^4 - sin(3 * x) + 12
+  return(result)
+}
+random_numbers <- runif(10, min = 0, max = 50) 
+results <- sapply(random_numbers, calculate_expression)
+
+
+
+```
+
+ c. *Does your function perform a vectorized calculation? How do you know?*
+ 
+Not vectorized; function is operates on a single value of x and calculates based on that input. 
+If it were vectorized, R could apply the x without needing a loop.
+
+### Question 2
+
+*Make a function that reports the area of a land mass in the islands data set. The user input should be the name of the land mass. Include a line of code that uses the function as an example.*
+
+```{r, include=TRUE}
+data("islands")
+
+get_land <- function(land_mass) {
+  if (!(land_mass %in% names(islands))) {
+    stop("Land mass not found in the islands dataset.")
+  }
+  area <- islands[land_mass]
+  cat("The area of", land_mass, "is:", area, "thousand square miles.\n")
+  
+  return(area)
+}
+
+```
+
+### Question 3
+
+*Make a function that reports a correlation value between two values in the Harman23.cor covariation matrix. The inputs should be two values in the covariance matrix. Include a line of code that uses the function as an example.*
+
+```{r, include=TRUE}
+data("Harman23.cor")
+
+
+get_correlation <- function(var1, var2) {
+  cov_matrix <- Harman23.cor$cov
+  
+  if (!(var1 %in% rownames(cov_matrix)) || !(var2 %in% rownames(cov_matrix))) {
+    stop("One or both variables not found in Harman23.cor covariance matrix.")
+  }
+
+  cov_value <- cov_matrix[var1, var2]
+  sd_var1 <- sqrt(cov_matrix[var1, var1])
+  sd_var2 <- sqrt(cov_matrix[var2, var2])
+  
+  correlation <- cov_value / (sd_var1 * sd_var2)
+}
+
+```
+

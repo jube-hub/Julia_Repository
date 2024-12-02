@@ -1,0 +1,183 @@
+---
+title: "Project 2:Median Earnings"
+author: "Julia Nguyen"
+date: "10/18/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+dataset: https://www.kaggle.com/datasets/anthonytherrien/median-weekly-earnings-by-sex?resource=download  
+---
+
+## Project 2
+
+```{r, include=TRUE}
+# Loading required libraries
+library(patchwork)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+```
+
+### Step 2
+
+
+```{r, include=TRUE}
+ data <- read.csv("../data/data.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
+```
+
+
+
+### Step 3: Upload your zip file containing the RMD producing two visualizations and the data set. 
+Text interpreting each visualization.:
+This is a line graph comparing the number of workers (in thousands) between men and women over time. There are dips in the graph, but overall it increases over the course of years. There are consistently more men in the workforce than women. There isn't a point where the line converges so that means the women's presence in the workforce never exceed a man's.
+
+A short summary of how you have improved the visualization in response to feedback:
+Since the graphs that I chose previously had essentially demosntrated the same things but in diffrent ways, i decided to construct a graph comparing the amount of men vs women working. I renamed the columns, converted number of workers columns to numeric,  reshaped the data to long format, and then created te line plot. 
+```{r, include=TRUE}
+
+data <- data %>%
+  rename(
+    Workers_Men = Number.of.workers..in.thousands....Men,
+    Workers_Women = Number.of.workers..in.thousands....Women
+  )
+data$Workers_Men <- as.numeric(gsub(",", "", data$Workers_Men))
+data$Workers_Women <- as.numeric(gsub(",", "", data$Workers_Women))
+workers_long <- data %>%
+  select(Year, Workers_Men, Workers_Women) %>%
+  pivot_longer(cols = starts_with("Workers"), 
+               names_to = "Gender", 
+               values_to = "Number_of_Workers")
+
+ggplot(workers_long, aes(x = Year, y = Number_of_Workers, color = Gender)) +
+  geom_line(size = 1) +
+  labs(title = "Number of Workers Over Time: Men vs Women",
+       x = "Time (Year)",
+       y = "Number of Workers (in thousands)") +
+  scale_color_manual(values = c("Workers_Men" = "blue", "Workers_Women" = "pink"),
+                     labels = c("Men", "Women")) +  
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+ggsave (filename= “figures/ggsave.pdf”, plot = p, device = “pdf”,width =6, height =5, units = “in”)
+
+```
+
+#1 pt.2
+```{r, include=TRUE}
+clean_data <- function(data) {
+  data <- data %>%
+    rename(
+      Workers_Men = Number.of.workers..in.thousands....Men,
+      Workers_Women = Number.of.workers..in.thousands....Women
+    )
+  return(data)
+}
+
+data[c("Workers_Men", "Workers_Women")] <- lapply(data[c("Workers_Men", "Workers_Women")], function(x) {
+  as.numeric(gsub(",", "", x))
+})
+
+workers_long <- data %>%
+  select(Year, Workers_Men, Workers_Women) %>%
+  pivot_longer(cols = starts_with("Workers"), 
+               names_to = "Gender", 
+               values_to = "Number_of_Workers")
+
+ggplot(workers_long, aes(x = Year, y = Number_of_Workers, color = Gender)) +
+  geom_line(size = 1) +
+  labs(title = "Number of Workers Over Time: Men vs Women",
+       x = "Time (Year)",
+       y = "Number of Workers (in thousands)") +
+  scale_color_manual(values = c("Workers_Men" = "blue", "Workers_Women" = "pink"),
+                     labels = c("Men", "Women")) +  
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+
+```
+### Step 3: Upload your zip file containing the RMD producing two visualizations and the data set. 
+
+Text interpreting each visualization.:
+This chart highlights the gender pay gap in median weekly earnings, showing a steady rise in earnings for both men and women, but with men earning more across all three years.
+
+A short summary of how you have improved the visualization in response to feedback:
+Previously, I had defining data manually as per suggestion of a random youtube video. But I realized I could have just loaded it from my data set. I also removed all the notes I wrote down and headers. But then, it started to say that Column `Median_Earnings_Men` doesn't exist.  So I did name (data) to find the column names. Turns out I accidently put _ instead of .
+
+```{r, include=TRUE}
+
+data <- data %>%
+  rename(
+    Median_Earnings_Men = Median.weekly.earnings..in.current.dollars....Men,
+    Median_Earnings_Women = Median.weekly.earnings..in.current.dollars....Women
+  )
+
+meoww <- data %>%
+  select(Year, Median_Earnings_Men, Median_Earnings_Women) %>%
+  pivot_longer(cols = starts_with("Median_Earnings"), 
+               names_to = "Gender", 
+               values_to = "Median_Earnings")
+
+ggplot(meoww, aes(x = factor(Year), y = Median_Earnings, fill = Gender)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Comparing Median Weekly Earnings by Gender (2021-2023), Q1",
+       x = "Time (Year)",
+       y = "Median Weekly Earnings (in dollars)") +
+  theme_minimal() +
+  scale_fill_manual(values = c("Median_Earnings_Men" = "blue", "Median_Earnings_Women" = "pink"),
+                    labels = c("Men", "Women")) + 
+  theme(axis.text.x = element_text(angle = 0, hjust = 0.5)) +
+  scale_y_continuous(limits = c(0, 1600))
+
+ggsave("../Results/Project 2_ Visualization file for class (1).pdf",last_plot())
+```
+
+#2 pt.2
+```{r, include=TRUE}
+
+meoww <- data %>%
+  select(Year, Median_Earnings_Men, Median_Earnings_Women) %>%
+  pivot_longer(cols = starts_with("Median_Earnings"), 
+               names_to = "Gender", 
+               values_to = "Median_Earnings")
+
+annual_increase <- function(earnings, increase_rate = 0.03) {
+  earnings * (1 + increase_rate)
+}
+
+ggplot(meoww, aes(x = factor(Year), y = Median_Earnings, fill = Gender)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8), alpha = 0.7) +
+  geom_line(aes(y = annual_increase(Median_Earnings), color = Gender, group = Gender), 
+            position = position_dodge(width = 0.8), size = 1, linetype = "solid") +
+  labs(title = "Comparing Median Weekly Earnings by Gender with Projected Annual Salary Increase",
+       x = "Time (Year)",
+       y = "Median Weekly Earnings (in dollars)") +
+  theme_minimal() +
+  scale_fill_manual(values = c("Median_Earnings_Men" = "blue", "Median_Earnings_Women" = "pink"),
+                    labels = c("Men", "Women")) +
+  scale_color_manual(values = c("blue", "pink"), labels = c("Men (Projected)", "Women (Projected)")) +
+  theme(axis.text.x = element_text(angle = 0, hjust = 0.5)) +
+  scale_y_continuous(limits = c(0, 1800))
+
+ggsave("../Results/Project 2_ Visualization file for class (1).pdf",last_plot())
+```
+
+
+A short summary of how your code has been updated between Projects 1 and 2:
+
+Visual 1:
+In my updated code,  a few modifications have been made:
+
+A function called clean_data() was  created to rename the columns Number.of.workers..in.thousands....Men and Number.of.workers..in.thousands....Women to Workers_Men and Workers_Women.While, it  doesn’t return anything,it does simplify the code and made it easier to read. 
+
+I removed any additional commas and converted the Workers_Men and Workers_Women columns to numeric value. Then, I used the lapply() function to apply the conversion to both columns at once. 
+
+While the overall visual of the origional and new plots remains the same, using function and loop, I have made the code simplier and easier to read.
+
+Visual 2: 
+In my updated code,  a few modifications have been made:
+
+The data is  renamed to Median_Earnings_Men and Median_Earnings_Women from Median.weekly.earnings..in.current.dollars....Men and Median.weekly.earnings..in.current.dollars....Women. As in the first visual, this makes the code easier to read.
+Then, I added the annual_increase() Function which calculates the projection for future earnings. To show the projected increase, I added a line using the geom_line() function.
+
+

@@ -1,0 +1,80 @@
+---
+title: "Assignment 1.13"
+author: "Julia Nguyen"
+date: "09/16/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+### Collaboration team: 
+
+Record who you've worked on the assignment with here. 
+
+
+## Assignment 1.13 -- Class coercion
+
+```{r setup, include=FALSE}
+# Do not alter this section of code!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Write a R code in each chunk (gray space) that provides answers to the following questions. If any questions need direct answers, give them in regular text space (white space).
+
+### Question 1
+
+*Load the data set InsectSprays.*
+
+```{r}
+data("InsectSprays")
+```
+
+*Use it to answer the following questions.*
+
+  a. *Convert the spray column to a numeric vector.*
+
+```{r}
+numeric <- as.numeric(InsectSprays$spray)
+```
+  
+  b. *Convert the spray column to a characters vector.* 
+  
+```{r}
+Character_spray <- as.character(InsectSprays$spray)
+```
+  
+  c. *Convert the count column into an integer vector.*
+  
+```{r}
+Integar_spray <- as.integer(InsectSprays$count)
+```
+
+  d. *Use any mathematical expression with a comparison operator to convert the count column into a logical vector.*
+  
+```{r}
+Spray_logical <- InsectSprays$count > 5
+```
+
+  e. *Convert the logical vector in part d into a numeric vector.*
+  
+```{r}
+count_numeric <- as.numeric(Spray_logical)
+```
+
+### Question 2
+
+*Load the data set state. This is a series of 5 vectors of different lengths and compositions (state.abb, state.area, state.division, state.name, state.region), 1 matrix (state.x77), and 1 list (state.center). Make these all into a single list with 7 members called state.info Make sure that each member of the list has a name.*
+
+```{r}
+data("state")
+state.info <- list(abb = state.abb,area = state.area, division = state.division,name = state.name,region = state.region,x77 = state.x77,center = state.center)
+```
+
+
+### Question 3
+
+*Can you convert state.info into a data frame? If so, write the code. If not, explain why.*
+No, because state.info contains multiple types of data: vectors, a list, and a matrix. A data frame requires each column has the same length, but state.info (the list, vectors, and matrix) doesn't have consistent length. 
+
+Turn in this RMD file.

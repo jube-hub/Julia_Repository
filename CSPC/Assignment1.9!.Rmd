@@ -1,0 +1,78 @@
+---
+title: "Assignment 1.9"
+author: "Julia Nguyen"
+date: "09/11/2024"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+subtitle: CPSC 292 Section 02
+---
+
+### Collaboration team: 
+
+Record who you've worked on the assignment with here. 
+
+
+## Assignment 1.9 -- Arrays
+
+```{r setup, include=FALSE}
+# Do not alter this section of code!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Write a R code in each chunk (gray space) that provides answers to the following questions. If any questions need direct answers, give them in regular text space (white space).
+
+### Question 1
+
+*Create a three-dimensional array using `sample()` to generate data and store it in a variable called my3Darray. (The function `sample()` can be used to generate random whole numbers from a range you specify.) *
+
+```{r}
+data <- c(4,3,2)
+my3darray <- array(sample(1:10, prod(data), replace = TRUE), dim = data)
+```
+
+*Use this array to answer the following questions.*
+
+  a. *What dimensions are your 3D array?*
+  
+```{r}
+dim(my3darray)
+```
+
+  b. *How could you subset a part of your array to a single 2D matrix? Create a working example.*
+  
+```{r}
+my2Dmatrix <- my3darray[, , 2]
+```
+
+### Question 2
+
+*Create a four-dimensional array using `sample()` to generate data and store it in a variable called my4Darray.*
+
+```{r}
+dimension <- c(1,2,3,4)
+my4Darray <- array(sample(1:10, prod(dimension), replace= TRUE), dim= dimension)
+```
+
+*Use this array to answer the following questions.*
+
+  a. *What dimensions are your 4D array?*
+  
+```{r}
+dim(my4Darray)
+```
+  
+  b. *How could you subset a part of your array to a single 2D matrix? Create a working example.*
+  
+```{r}
+my2Dmatrix2 <- my4Darray[ , , 2, 3]
+```
+  
+  c. *How could you subset a part of your array to a single 3D array? Create a working example.*
+  
+```{r}
+my3darray2 <- my4Darray[ , , , 3]
+```
+
+Turn in this RMD file.

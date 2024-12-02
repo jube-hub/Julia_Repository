@@ -1,0 +1,65 @@
+---
+title: "Assignment 1.11"
+author: "Julia Nguyen"
+date: "09/13/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+### Collaboration team: 
+
+Record who you've worked on the assignment with here. 
+
+
+## Assignment 1.11 -- Lists
+
+```{r setup, include=FALSE}
+# Do not alter this section of code!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Write a R code in each chunk (gray space) that provides answers to the following questions. If any questions need direct answers, give them in regular text space (white space).
+
+### Question 1
+
+*What are the differences between lists and data frames? When is it best to use a list versus a data frame?*
+
+You would use lists if you need 1) Members of different sizes, member of different classes, or both. You would use a data frame only for members of different classes. People typically use lists due to their speed. Lists can have as many members as you want and each member can be a different class, but wuthun an element, must be the same type. Data frames are limited to 2D structures and must have the same type within a column. 
+
+### Question 2
+
+*Create a list named my.list that contains at least three members of three different data types/classes. Include the name in the next line so that R prints the list as output.*
+
+```{r}
+my.list <- list(matrix(data = 1:9, nrow = 3, ncol= 3))
+```
+
+### Question 3
+
+*Load the data set ability.cov and use it to perform the following:*
+
+```{r}
+data(ability.cov)
+```
+
+  a. *Write a line of code that indexes the covariance value (cov) for maze and picture.*
+  
+```{r}
+cov_maze <- ability.cov$cov["maze","picture"]
+```
+  
+  b. *Write another line of code that indexes the covariance value for blocks and reading.*
+  
+```{r}
+cov_block <- ability.cov$cov["blocks","reading"]
+```
+  
+  c. *Subset the covariance value matrix (cov) so it shows only values associated with vocab.*
+  
+```{r}
+cov_vocab <- ability.cov$cov["vocab", ]
+```
+
+Turn in this RMD file.

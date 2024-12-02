@@ -1,0 +1,45 @@
+---
+title: "Assignment 1.2"
+author: "Julia Nguyen"
+date: "08/28/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section ##'
+---
+
+### Collaboration team: 
+
+
+
+
+## Assignment 1.2 -- Interacting with Filesystems
+
+Write a brief answer explaining the following questions:
+
+### Question 1
+
+*What purposes does a filesystem serve?*
+
+The purpose is to provide non-violatitle storage, and organize that information.
+
+### Question 2
+
+*What is a file path? What is the difference between an absolute and relative file path?*
+
+A file path indicates the location of individual files. Absolute paths always point to the same location while relative paths, depending on the current directory, point to diffrent locations. The absolute file path always provide the complete path to a file starting from the root directory. The relative file path starts in the working directory. 
+
+### Question 3
+
+*What is a working directory? Why do computers need to use working directories?*
+
+it is the current location of the shell, the shell being the "librarian". it will lead you to through the "library". The shell loads the memory of the metadata about items (ex. size, and date). 
+
+
+### Question 4
+
+*The following is a diagram of folders on my computer. My working directory is in the folder labeled “D.” I want to access the file “6.txt”. What is the file path I must use? (Remember “..” will move you up to a parent directory.)*
+
+../c/a/
+
+![File system diagram.](filesys1.png)

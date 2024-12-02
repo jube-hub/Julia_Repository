@@ -1,0 +1,135 @@
+---
+title: "Assignment 1.12"
+author: "Julia Nguyen"
+date: "09/16/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+### Collaboration team: 
+
+Record who you've worked on the assignment with here. 
+
+
+## Assignment 1.12 -- Factors and Special Values
+
+```{r setup, include=FALSE}
+# Do not alter this section of code!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Write a R code in each chunk (gray space) that provides answers to the following questions. If any questions need direct answers, give them in regular text space (white space).
+
+### Question 1
+
+*Load the data set Indometh.*
+
+```{r}
+data(Indometh)
+```
+
+*Use it to answer the following questions.*
+
+  a. *How many levels does the column Subject have?*
+
+```{r}
+nlevels (Indometh$Subject)
+```
+  
+  b. *What are the levels?* 
+  
+```{r}
+ levels(Indometh$Subject)
+```
+  Levels are the different categories of a factor variable. There is a lot of data and factors help organize the categorical data. They help specify the levels. 
+  
+  c. *Are they ordered or unordered?*
+  
+```{r}
+is.ordered(Indometh$Subject)
+```
+Unordered facts are categories with no order such as blue, red, and white. Ordered factors have levels with a specific sequence such as good, better, best. 
+factor("small", "medium", "large") , ordered = TRUE)
+### Question 2
+
+  a. *Make a vector that contains the names of seven fruits, some that you like and some that you don’t. Name it fruits.*
+
+```{r}
+fruits <- c("pinaepple", "dragonfruit", "mangosteen", "durian", "mango", "pomelo", "blueberry")
+```
+
+  b. *Convert fruits into a vector of unordered factors. What levels are in fruits now?*
+  
+```{r}
+fruits_factor <- factor(fruits)
+levels(fruits_factor)
+```
+
+  c. *Create another vector that describes the color of each of these fruits named fruit.colors. Be sure that the colors in the same order as fruits so that they match up. Convert this vector into unordered factors.*
+  
+```{r}
+fruit_color <- c("yellow", "pink", "purple", "green", "yellow", "green", "blue")
+fruit_factor_color <- factor(fruit_color)
+levels(fruit_factor_color)
+```
+
+  d. *Now create a third vector that rates your preference for each fruit in fruits. Ratings can be up to you, but they should be ordered (like good, better, best) and contain at least 3 rankings. Convert this vector into ordered factors.*
+  
+```{r}
+fruit_rating <- c("good", "better", "best", "okay", "good", "best", "okay")
+fruit_factor_rank <- factor(fruit_rating, levels = c("okay","good","better", "best"), ordered =TRUE )
+levels(fruit_factor_rank)
+```
+
+  e. *Now, bind all three factored vectors together into a data frame named fruit.info. Be sure each column has a good name!*
+  
+```{r}
+fruit.info <- data.frame(Fruit=fruits_factor, Color = fruit_factor_color, Rating = fruit_factor_rank)
+```
+
+### Question 3
+
+*Load the data set airquality.*
+
+```{r}
+data("airquality")
+```
+
+  a. *Does this data set contain missing values?*
+  
+```{r}
+missing <- any(is.na("airquality"))
+```
+  
+  b. *How many missing values are there in each of the data columns (Ozone, Solar.R, Wind)?*
+  
+```{r}
+missing_value <- colSums(is.na(airquality[c("Ozone", "Solar.R", "Wind")]))
+```
+  
+  c. *Produce a data frame airquality.cleaned that removes all observations (rows) with missing data.*
+  
+```{r}
+airquality.cleaned <- na.omit(airquality)
+```
+
+### Question 4
+
+*Give a quick explanation of what each special value means.*
+
+  a. `Inf`
+  
+ Infinity
+  
+  b. `NA`
+  
+ data is missing
+  
+  c. `NaN`
+  
+  Not a Number
+  
+
+Turn in this RMD file.

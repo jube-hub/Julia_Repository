@@ -1,0 +1,55 @@
+---
+title: "Assignment 2.3"
+author: "Julia Nguyen"
+date: "9/30/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+## Assignment 2.3 
+
+```{r, include=TRUE}
+# Loading required libraries
+library(tidyverse)
+```
+
+### Question 1
+
+*Create a plot using base graphics (not ggplot!) the `Loblolly` data set that graphs height versus age. Color each point by the Seed number. Make sure that the code displays along with your plot. Include all parts of the code (including anything you used to figure out how to construct the plot). *
+
+```{r, include=TRUE}
+ data("Loblolly")
+colors <- rainbow(length(unique(Loblolly$Seed)))[as.numeric(as.factor(Loblolly$Seed))]
+
+plot(Loblolly$age, Loblolly$height,
+     col=colors,
+     pch=19,
+     xlab="Age",
+     ylab="Height")
+
+```
+
+## Question 2
+
+*Now add lines to the plot in Question 1. The lines should connect individual Seed numbers only, and should be the same color as the points. Make this a separate code chunk by copying the first plot over to this question.*
+
+
+```{r, include=TRUE}
+
+data("Loblolly")
+colors <- rainbow(length(unique(Loblolly$Seed)))[as.numeric(as.factor(Loblolly$Seed))]
+plot(Loblolly$age, Loblolly$height,
+     col=colors,
+     pch=19,
+     xlab="Age",
+     ylab="Height")
+for (seed in unique(Loblolly$Seed)) {
+  seed_data <- Loblolly[Loblolly$Seed == seed, ]
+  seed_data <- seed_data[order(seed_data$age), ]
+  lines(seed_data$age, seed_data$height, col=colors[as.numeric(as.factor(seed))], lwd=2)
+}
+
+```
+

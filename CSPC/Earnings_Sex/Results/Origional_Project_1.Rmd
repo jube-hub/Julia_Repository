@@ -1,0 +1,103 @@
+---
+title: "Project 1"
+author: "Julia Nguyen"
+date: "10/18/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+## Project 1
+
+```{r, include=TRUE}
+# Loading required libraries
+library(patchwork)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+```
+
+### Step 2
+
+
+```{r, include=TRUE}
+data <- read.csv("../data/data.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
+
+
+```
+
+
+
+### Step 3: Upload your zip file containing the RMD producing two visualizations and the data set. 
+
+contrast men over women
+
+```{r, include=TRUE}
+
+plot(x = data$Year, y = data$Median.weekly.earnings..in.current.dollars....Total, 
+     type = "l", xlab = "Time (Year)", ylab = "Median Weekly Earnings($)", main= "Total Median Weekly Earnings over Time")
+
+```
+### Step 3: Upload your zip file containing the RMD producing two visualizations and the data set. 
+
+```{r, include=TRUE}
+data <- data.frame(
+  Year = c(2021, 2021, 2022, 2022, 2023, 2023),
+  Quarter = c(1, 1, 1, 1, 1, 1),
+  Median_Earnings_Men = c(1200, 1250, 1300, 1350, 1400, 1450),
+  Median_Earnings_Women = c(800, 850, 900, 950, 1000, 1050)
+)
+
+#organize dataset
+meoww<- data %>%
+  select(Year, Median_Earnings_Men, Median_Earnings_Women) %>%
+  pivot_longer(cols = starts_with("Median_Earnings"), 
+               names_to = "Gender", 
+               values_to = "Median_Earnings")
+
+ggplot(meoww, aes(x = factor(Year), y = Median_Earnings, fill = Gender)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Comparing Median Weekly Earnings by Gender (2021-2023), Q1",
+       x = "Time (Year)",
+       y = "Median Weekly Earnings (in dollars)") +
+  theme_minimal() +
+  scale_fill_manual(values = c("Median_Earnings_Men" = "blue", "Median_Earnings_Women" = "pink")) +
+  theme(axis.text.x = element_text(angle = 0, hjust = 0.5))+
+  scale_y_continuous(limits = c(0, 1600))
+
+```
+Make GRAY GRIDS prominent 
+
+notes: 
+* %>% to put one function directly as input to another function for easier readability. 
+
+* pivot_longer() is to reshape data from a wide to short format.to make the dataset easiler to look at. variable is column and obeservation is a row
+
+* fill is to replace NA values
+
+* position_dodge() is used so bars don't overlap. I used it to separate categorical values (gender) and numeric values (earnings) with the same group (year). 
+
+* theme_minimal() so my ggplot looks clean (removes gridlines, etc.)
+
+* Scale_ is to customize the graph
+
+
+
+### Step 4 
+
+```{r, include=TRUE}
+
+
+
+
+
+```
+
+### Step 5 
+
+```{r, include=TRUE}
+
+
+
+```

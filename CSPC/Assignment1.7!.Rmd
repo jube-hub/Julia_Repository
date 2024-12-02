@@ -1,0 +1,107 @@
+---
+title: "Assignment 1.7"
+author: "Julia Nguyen"
+date: "09/09/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+### Collaboration team: 
+
+Record who you've worked on the assignment with here. 
+
+
+## Assignment 1.7 -- Vectors
+
+```{r setup, include=FALSE}
+# Do not alter this section of code!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Write a R code in each chunk (gray space) that provides answers to the following questions. If any questions need direct answers, give them in regular text space (white space).
+
+### Question 1
+
+*Create a vector that is a sequence of numbers between 30 and 54 with the total length of 600.*
+
+*By what amount is each element separated by? Have R calculate this difference in code.*
+
+```{r}
+a<- seq(from=30, to=54, length.out=600)
+difference <- a[2]-a[1]
+```
+
+### Question 2
+
+*Create a vector that repeats the same sequence of numbers 5 through 8 fifteen times.*
+
+*Write another line of code that repeats these element-wise.*
+
+```{r}
+v1 <- rep(seq(5,8), times=15)
+element_v1 <- rep(v1, each=3)
+```
+
+### Question 3
+
+*Create a vector q3 that is a sequence of numbers between 1 and 400 that contains numbers spaced by 0.2 in the code chunk below, then answer each of the following parts with code below.*
+
+```{r}
+q3 <- seq(from=1, to=400, by=0.2)
+```
+
+  a. *What class is the vector q3?*
+
+```{r}
+
+```
+" numeric"
+  
+  b. *How long is the vector q3?*
+  
+```{r}
+length(q3)
+```
+
+  c. *What is the mean value of the vector q3?*
+  
+```{r}
+mean(q3)
+```
+
+  d. *What value is at position 78 in the vector q3?*
+  
+```{r}
+value_atpos <- q3[78]
+```
+
+  e. *What is the sum of the numbers in positions 611 through 762 of the vector q3?*
+  
+```{r}
+sum_pos <- sum(q3[611:762])
+```
+
+### Question 4
+
+*You have a vector pop1 which has the elements: < 5, 7.3, 2.1, 11 >. You’d like to add the value 1.3 to each element of pop1 to create a new vector pop2. Write code to do this.*
+
+```{r}
+pop1 <- c(5, 7.3, 2.1, 11)
+pop2 <- pop1 +1.3
+```
+
+*Is the way you've added 1.3 to pop1 adding by element or vectorized? How can you tell?*
+
+vectorized; each number is handled by R at the same time without needing a loop.We don't have to the calculations one by one.
+
+### Question 5
+
+*The following line of code does not work. Correct the error so that a vector is produced.*
+
+```{r}
+pop3 <- c(3, 4, 7, 1, 3)
+```
+
+Turn in this RMD file.

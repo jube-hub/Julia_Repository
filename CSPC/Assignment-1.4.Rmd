@@ -1,0 +1,27 @@
+---
+title: "Assignment 1.4"
+subtitle: "CPSC 292 Section 02 "
+author: "Julia Nguyen"
+date: "08/30/2024"
+output: html_notebook
+---
+
+## Assignment 1.4 -- Computer Games
+
+## Program sheet
+
+Group members: 
+
+ - Max Chen
+ - Charlie Kami
+
+ 
+### Program steps: 
+
+ 1. Walk forward one pace
+ 2. lift arm
+ 3. Wave with hand
+ 
+ 
+### What is the end task? 
+Wave hello

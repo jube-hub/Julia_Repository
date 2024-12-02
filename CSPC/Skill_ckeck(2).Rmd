@@ -1,0 +1,46 @@
+---
+title: "Skill_Checl2"
+author: "Julia"
+date: "10/09/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section 02'
+---
+
+## Skill Check #2
+
+```{r, include=TRUE}
+# Loading required libraries
+library("ggplot2")
+```
+
+
+
+
+```{r, include=TRUE}
+juliadata <- library(ggplot2)
+data("Loblolly")
+force(Loblolly)
+
+ggplot(Loblolly, aes(x = age, y = height)) +
+  geom_point(shape = 17) +
+  labs(x = "Age (year)", 
+       y = "Height (cm)", 
+       title = "Height vs. Age of Loblolly Trees")
+
+```
+
+
+
+
+```{r, include=TRUE}
+data("Loblolly")
+force(Loblolly)
+
+ggplot(Loblolly, aes(x = Seed, y = height)) +
+  geom_point(shape = 17) +
+  labs(x = "Seed (#)", 
+       y = "Height (cm)", 
+       title = "Height vs. Seed of Loblolly Trees")
+```

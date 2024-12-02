@@ -1,0 +1,50 @@
+---
+title: "Assignment 1.1"
+author: "Julia Nguyen"
+date: "08/28/2024"
+output:
+  html_document:
+    df_print: paged
+subtitle: 'CPSC 292 Section ##'
+---
+
+### Collaboration team: 
+
+Record who you've worked on the assignment with here. 
+
+
+## Assignment 1.1 -- How Computers Work
+
+
+Write a brief answer explaining the following questions:
+
+### Question 1
+
+*What are the four main things every computer does? Describe why each of these are important for the function of a computer.*
+
+the four are input, storage, processing, and ouput. input makes the computer do stuff. storage stores the information to be processed.processing takes information from memory, processes it to be stored until its ready to reach the output.Output is the result of the input, and processing.
+
+### Question 2
+
+*How does a computer represent the number 34 in its physical storage (i.e., how do you write this in binary)?*
+
+100010
+
+### Question 3
+
+*From the video, describe the function of circuits and logic used by computers.*
+
+circut takes an electric signal and flips it. The smaller the circuits, the less distance the electricity has to go and therefore it is faster. If a circuit gets a signal 1, then it flips it into a 0. However, say there is two circuits, the signals will combine. It both circuits recieve two 0 signals, the result is also a 0. 
+
+### Question 4
+
+*What type of code does the translating between code you write and the circuits of a CPU?*
+
+Compliers; the take human-written code and translate it into binary for the circuits to read. 
+
+### Question 5
+
+*What is the difference between memory and storage?*
+
+Storage: sores all data/ files, is non-violtile (holds info until deleted), and runs through an interface.
+Memory: is faster,but more expensive. to do anything with data/values, it must first go in memory. data needs to be pulled from storage into memory 
